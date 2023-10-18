@@ -24,8 +24,7 @@ int main() {
     int empID, recordPosition;
     struct Employee emp;
 
-    employeeFile = fopen("employee.dat", "rb+");  // Open or create a binary file for reading and writing
-
+    employeeFile = fopen("employee.dat", "rb+"); 
     if (employeeFile == NULL) {
         employeeFile = fopen("employee.dat", "wb+");
         if (employeeFile == NULL) {
@@ -48,7 +47,7 @@ int main() {
                 printf("Enter employee ID: ");
                 scanf("%d", &emp.empID);
                 printf("Enter employee name: ");
-                scanf(" %[^\n]s", emp.name);  // Read a whole line
+                scanf(" %[^\n]s", emp.name);
                 printf("Enter employee salary: ");
                 scanf("%f", &emp.salary);
                 writeRecord(employeeFile, emp.empID, &emp);
@@ -86,7 +85,7 @@ int main() {
                 scanf("%d", &empID);
                 readRecord(employeeFile, empID, &emp);
                 if (emp.empID != 0) {
-                    memset(&emp, 0, sizeof(struct Employee));  // Mark the record as deleted
+                    memset(&emp, 0, sizeof(struct Employee)); 
                     writeRecord(employeeFile, empID, &emp);
                     printf("Record deleted.\n");
                 } else {
